@@ -1,5 +1,5 @@
 # CodingCamp-12Oktober-Rakesa
-Life Dashboard — All-in-One Personal Productivity HUB
+Life Dashboard — All-in-One Personal Productivity Hub
 
 ​Life Dashboard adalah aplikasi web personal yang dibuat untuk membantu mengelola aktivitas harian, fokus, dan produktivitas dalam satu tampilan interaktif yang responsif.
 
