@@ -1,0 +1,542 @@
+/* Variable Warna & Tema */
+:root {
+    --bg-main: #F4F6F8;
+    --card-bg: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    --accent: #4F46E5;
+    --accent-hover: #4338CA;
+    --border-color: #E2E8F0;
+    --shadow: 0 4px 12px rgba(0,0,0,0.05);
+    --radius: 16px;
+}
+
+.dark {
+    --bg-main: #0F172A;
+    --card-bg: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent: #6366F1;
+    --accent-hover: #818CF8;
+    --border-color: #334155;
+    --shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 24px;
+}
+
+/* Mobile: kurangi padding agar konten tidak terpotong */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-gap {
+    display: flex;
+    gap: 10px;
+}
+
+.mb-1 {
+    margin-bottom: 12px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+/* Header & Controls */
+.header {
+    margin-bottom: 20px;
+}
+
+.brand h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: none;
+    flex-shrink: 0;
+    transition: background-color 0.2s, border-color 0.2s;
+    touch-action: manipulation;
+}
+
+.btn-icon:hover {
+    border-color: var(--accent);
+    background: var(--bg-main);
+}
+
+/* Greeting Section */
+.greeting-card {
+    text-align: center;
+    margin-bottom: 24px;
+    padding: 32px;
+}
+
+@media (max-width: 480px) {
+    .greeting-card {
+        padding: 20px 16px;
+    }
+}
+
+.time-display {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+@media (max-width: 480px) {
+    .time-display {
+        font-size: 2.2rem;
+    }
+}
+
+.date-display {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.greeting-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+#user-name {
+    color: var(--accent);
+    border-bottom: 2px dashed var(--accent);
+    outline: none;
+    cursor: pointer;
+}
+
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Focus Timer */
+.timer-card {
+    text-align: center;
+}
+
+.timer-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+}
+
+.timer-display {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 12px 0;
+    color: var(--text-primary);
+}
+
+@media (max-width: 480px) {
+    .timer-display {
+        font-size: 2.6rem;
+    }
+}
+
+.timer-controls {
+    justify-content: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap; /* tombol wrap ke bawah jika tidak cukup ruang */
+}
+
+.timer-settings {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.timer-settings input {
+    width: 60px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+/* Override khusus dark mode — mencegah browser system appearance
+   menimpa background input dengan warna terang bawaan sistem */
+.dark .timer-settings input {
+    background: var(--bg-main);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    color-scheme: dark;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    /* Pastikan teks tombol tidak terpotong di layar sempit */
+    white-space: nowrap;
+    /* Target tap area minimal 44px untuk touch */
+    min-height: 40px;
+    touch-action: manipulation;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    background-color: #EF4444;
+    color: white;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Disabled state — berlaku untuk semua varian .btn */
+.btn:disabled,
+.btn[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(40%);
+}
+
+/* To-Do List */
+.todo-card h2 {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.badge {
+    background: var(--bg-main);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+/* Input text dan tombol tidak boleh overflow di mobile */
+.todo-input-group input {
+    flex: 1;
+    min-width: 0; /* mencegah flex child overflow */
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    outline: none;
+    /* iOS: font-size < 16px trigger auto-zoom — paksa 16px */
+    font-size: 16px;
+}
+
+.todo-list {
+    list-style: none;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.todo-item.completed span {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.todo-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #EF4444;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Quick Links */
+.links-card {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .links-card {
+        grid-column: span 1;
+    }
+}
+
+.link-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    /* Wrap ke bawah di layar sempit */
+    flex-wrap: wrap;
+}
+
+.link-input-group input {
+    flex: 1;
+    min-width: 120px; /* jangan terlalu sempit */
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    /* iOS auto-zoom prevention */
+    font-size: 16px;
+}
+
+.quick-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.link-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.link-chip:hover {
+    border-color: var(--accent);
+}
+
+.link-chip-delete {
+    color: #EF4444;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+    padding-left: 4px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* =============================================
+   CURSOR PARTICLE EFFECT
+   - pointer-events: none agar tidak mengganggu klik/layout
+   - position: fixed agar ikut viewport, bukan scroll
+   ============================================= */
+.cursor-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform, opacity;
+    z-index: 9999;
+    /* Ukuran dan warna di-set via JS per partikel */
+}
+
+/* =============================================
+   WEATHER WIDGET
+   ============================================= */
+.weather-widget {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.weather-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.weather-temp {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.weather-desc {
+    color: var(--text-secondary);
+}
+
+/* =============================================
+   MOTIVATIONAL QUOTE
+   ============================================= */
+.quote-box {
+    margin-top: 20px;
+    padding: 14px 20px;
+    background: var(--bg-main);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quote-text {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.quote-author {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-align: right;
+}
+
+/* =============================================
+   TO-DO PROGRESS BAR
+   ============================================= */
+.todo-progress-wrap {
+    margin-bottom: 14px;
+}
+
+.todo-progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-main);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.todo-progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    border-radius: 99px;
+    transition: width 0.4s ease;
+}
+
+.todo-progress-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* =============================================
+   QUICK NOTES / SCRATCHPAD
+   ============================================= */
+.notes-card {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .notes-card {
+        grid-column: span 1;
+    }
+}
+
+.notes-textarea {
+    width: 100%;
+    min-height: 130px;
+    resize: vertical;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.notes-textarea:focus {
+    border-color: var(--accent);
+}
+
+.notes-saved-indicator {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    transition: opacity 0.3s;
+}

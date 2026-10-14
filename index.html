@@ -1,0 +1,143 @@
+<!--
+    Nama    : Rakesa
+    Tanggal : 12 Oktober 2026
+    Proyek  : Mini Project - Life Dashboard
+    Deskripsi: Personal productivity dashboard dengan fitur Jam Live,
+               Focus Timer (Pomodoro), To-Do List, Quick Links, dan Dark Mode.
+    Dibuat untuk RevoU Coding Camp
+-->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal productivity dashboard mini project oleh Rakesa - RevoU Coding Camp">
+    <title>Life Dashboard - Rakesa | RevoU Coding Camp</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header & Top Controls -->
+        <header class="header flex-between">
+            <div class="brand">
+                <h1>Dashboard.</h1>
+            </div>
+            <div class="controls flex-gap">
+                <button id="theme-toggle" class="btn-icon" title="Aktifkan Mode Gelap">🌙</button>
+            </div>
+        </header>
+
+        <!-- Section 1: Greeting & Live Clock -->
+        <section class="card greeting-card">
+            <!-- Weather Widget -->
+            <div class="weather-widget" id="weather-widget" aria-label="Informasi cuaca">
+                <span class="weather-icon" id="weather-icon">☀️</span>
+                <span class="weather-temp" id="weather-temp">--°C</span>
+                <span class="weather-desc" id="weather-desc">Memuat...</span>
+            </div>
+
+            <div class="time-display" id="clock">00:00:00</div>
+            <div class="date-display" id="date-string">Senin, 1 Januari 2026</div>
+            <div class="greeting-text">
+                <span id="greeting-prefix">Selamat Pagi</span>, 
+                <span id="user-name" contenteditable="true" spellcheck="false" title="Klik untuk mengedit nama (maks. 20 karakter)">Rakesa</span> ✏️
+            </div>
+
+            <!-- Motivational Quote -->
+            <div class="quote-box" id="quote-box" aria-label="Kutipan motivasi">
+                <p class="quote-text" id="quote-text"></p>
+                <p class="quote-author" id="quote-author"></p>
+            </div>
+        </section>
+
+        <!-- Main Dashboard Grid -->
+        <main class="dashboard-grid">
+            
+            <!-- Widget 1: Focus Timer (Pomodoro) -->
+            <section class="card timer-card">
+                <h2>⏱️ Focus Timer</h2>
+                <div class="timer-display" id="timer-display">25:00</div>
+                <div class="timer-controls flex-gap">
+                    <button id="timer-start" class="btn btn-primary">Start</button>
+                    <button id="timer-stop" class="btn btn-secondary">Stop</button>
+                    <button id="timer-reset" class="btn btn-outline">Reset</button>
+                </div>
+                <div class="timer-settings">
+                    <label for="custom-minutes">Durasi (Menit):</label>
+                    <input type="number" id="custom-minutes" value="25" min="1" max="60">
+                </div>
+            </section>
+
+            <!-- Widget 2: To-Do List -->
+            <section class="card todo-card">
+                <div class="flex-between mb-1">
+                    <h2>📝 To-Do List</h2>
+                    <span class="badge" id="task-count">0 Tugas</span>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="todo-progress-wrap" id="todo-progress-wrap" aria-label="Progress tugas">
+                    <div class="todo-progress-bar-bg">
+                        <div class="todo-progress-bar-fill" id="todo-progress-fill"></div>
+                    </div>
+                    <span class="todo-progress-label" id="todo-progress-label">0 dari 0 tugas selesai</span>
+                </div>
+                
+                <form id="todo-form" class="todo-input-group">
+                    <input type="text" id="todo-input" placeholder="Tambah tugas baru..." required>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </form>
+
+                <ul id="todo-list" class="todo-list">
+                    <!-- Item tugas akan dirender via JS -->
+                </ul>
+            </section>
+
+            <!-- Widget 3: Quick Links -->
+            <section class="card links-card">
+                <h2>🔗 Quick Links</h2>
+                <form id="link-form" class="link-input-group">
+                    <input type="text" id="link-title" placeholder="Nama Situs (cth: Google)" required>
+                    <input type="url" id="link-url" placeholder="URL (https://...)" required>
+                    <button type="submit" class="btn btn-primary">Tambah Link</button>
+                </form>
+                
+                <div id="quick-links-container" class="quick-links-grid">
+                    <!-- Quick link chips akan dirender via JS -->
+                </div>
+            </section>
+
+            <!-- Widget 4: Quick Notes / Scratchpad -->
+            <section class="card notes-card">
+                <div class="flex-between mb-1">
+                    <h2>🗒️ Quick Notes</h2>
+                    <span class="notes-saved-indicator" id="notes-saved-indicator" aria-live="polite"></span>
+                </div>
+                <textarea
+                    id="quick-notes"
+                    class="notes-textarea"
+                    placeholder="Tulis catatan cepat di sini... (tersimpan otomatis)"
+                    aria-label="Quick notes scratchpad"
+                    spellcheck="false"
+                ></textarea>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Life Dashboard. Built by Rakesa for RevoU Coding Camp Mini Project.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Utama -->
+    <script src="js/app.js"></script>
+</body>
+</html>
