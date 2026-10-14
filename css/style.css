@@ -30,11 +30,18 @@
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
+/* Cegah horizontal scroll di level root */
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
     min-height: 100vh;
     padding: 24px;
+    /* Cegah horizontal scroll di semua kondisi */
+    overflow-x: hidden;
 }
 
 /* Mobile: kurangi padding agar konten tidak terpotong */
@@ -46,7 +53,9 @@ body {
 
 .container {
     max-width: 1000px;
+    width: 100%;          /* Pastikan tidak melebihi viewport */
     margin: 0 auto;
+    overflow-x: hidden;   /* Isolasi overflow dari child yang nakal */
 }
 
 .flex-between {
@@ -70,6 +79,15 @@ body {
     border-radius: var(--radius);
     padding: 24px;
     box-shadow: var(--shadow);
+    /* Konten di dalam card tidak boleh keluar batasnya */
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 16px;
+    }
 }
 
 /* Header & Controls */
@@ -341,19 +359,18 @@ body {
     display: flex;
     gap: 8px;
     margin-bottom: 16px;
-    /* Wrap ke bawah di layar sempit */
     flex-wrap: wrap;
 }
 
 .link-input-group input {
     flex: 1;
-    min-width: 120px; /* jangan terlalu sempit */
+    /* min-width dikecilkan agar tidak overflow di HP 360px */
+    min-width: 80px;
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     background: var(--bg-main);
     color: var(--text-primary);
-    /* iOS auto-zoom prevention */
     font-size: 16px;
 }
 
@@ -425,6 +442,9 @@ body {
     font-weight: 500;
     margin-bottom: 16px;
     color: var(--text-primary);
+    /* Cegah widget meluber di layar sempit */
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 
 .weather-icon {
